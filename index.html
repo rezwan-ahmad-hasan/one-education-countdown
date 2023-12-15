@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+      .counter-body {
+        margin: 0;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ff2c59;
+        color: white;
+      }
+
+      .r4h-container {
+        max-width: 138px;
+        margin: 0 auto;
+        text-align: center; 
+      }
+      #r4h-countdown ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+      }
+
+      #r4h-countdown li {
+        display: inline-flex;
+        flex-direction: column;
+      }
+
+      #r4h-countdown .r-coun-4-ter-h {
+        text-align: center;
+        font-family: "Rubik", sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px; 
+        text-transform: uppercase;
+      }
+      #r4h-countdown .r-counter-4-label-h {
+        text-align: center;
+        font-family: "Rubik", sans-serif;
+        font-size: 6px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter-body">
+        <div class="r4h-container">
+            <div id="r4h-countdown">
+              <ul>
+                <li>
+                  <span class="r-coun-4-ter-h" id="r4h-days"></span
+                  ><span class="r-counter-4-label-h">days</span>
+                </li>
+                <li>
+                  <span class="r-coun-4-ter-h" id="r4h-hours"></span
+                  ><span class="r-counter-4-label-h">Hours</span>
+                </li>
+                <li>
+                  <span class="r-coun-4-ter-h" id="minutes_r4h"></span
+                  ><span class="r-counter-4-label-h">Minutes</span>
+                </li>
+                <li>
+                  <span class="r-coun-4-ter-h" id="seconds_r4h"></span
+                  ><span class="r-counter-4-label-h">Seconds</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set the date we're counting down to (tomorrow)
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate());
+        tomorrow.setHours(17, 59, 59, 0);
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        function updateCountdown() {
+          const now = new Date();
+          const difference = tomorrow - now;
+
+          if (difference <= 0) {
+            // If countdown ends, clear the interval and set all values to 0
+            clearInterval(countdownInterval);
+            document.getElementById("r4h-days").textContent = "00";
+            document.getElementById("r4h-hours").textContent = "00";
+            document.getElementById("minutes_r4h").textContent = "00";
+            document.getElementById("seconds_r4h").textContent = "00";
+          } else {
+            // Calculate remaining time
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor(
+              (difference % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Update the HTML with the remaining time
+            document.getElementById("r4h-days").textContent = days
+              .toString()
+              .padStart(2, "0");
+            document.getElementById("r4h-hours").textContent = hours
+              .toString()
+              .padStart(2, "0");
+            document.getElementById("minutes_r4h").textContent = minutes
+              .toString()
+              .padStart(2, "0");
+            document.getElementById("seconds_r4h").textContent = seconds
+              .toString()
+              .padStart(2, "0");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
