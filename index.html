@@ -89,12 +89,11 @@
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Set the date we're counting down to (tomorrow)
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate());
         tomorrow.setHours(17, 59, 59, 0);
 
-        // Update the countdown every second
+
         const countdownInterval = setInterval(updateCountdown, 1000);
 
         function updateCountdown() {
@@ -102,7 +101,6 @@
           const difference = tomorrow - now;
 
           if (difference <= 0) {
-            // If countdown ends, clear the interval and set all values to 0
             clearInterval(countdownInterval);
             document.getElementById("r4h-days").textContent = "00";
             document.getElementById("r4h-hours").textContent = "00";
@@ -119,7 +117,6 @@
             );
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            // Update the HTML with the remaining time
             document.getElementById("r4h-days").textContent = days
               .toString()
               .padStart(2, "0");
