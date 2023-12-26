@@ -11,24 +11,25 @@
       rel="stylesheet"
     />
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
       .counter-body {
         margin: 0;
-        height: 200px;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #ff2c59;
+        /* background-color: #A3CCBE; */
+        background-color: #8399a8;
         color: white;
       }
 
       .r4h-container {
         max-width: 138px;
         margin: 0 auto;
-        text-align: center; 
+        text-align: center;
       }
       #r4h-countdown ul {
         list-style: none;
@@ -49,7 +50,7 @@
         font-size: 20px;
         font-style: normal;
         font-weight: 400;
-        line-height: 32px; 
+        line-height: 32px;
         text-transform: uppercase;
       }
       #r4h-countdown .r-counter-4-label-h {
@@ -64,28 +65,28 @@
   </head>
   <body>
     <div class="counter-body">
-        <div class="r4h-container">
-            <div id="r4h-countdown">
-              <ul>
-                <li>
-                  <span class="r-coun-4-ter-h" id="r4h-days"></span
-                  ><span class="r-counter-4-label-h">days</span>
-                </li>
-                <li>
-                  <span class="r-coun-4-ter-h" id="r4h-hours"></span
-                  ><span class="r-counter-4-label-h">Hours</span>
-                </li>
-                <li>
-                  <span class="r-coun-4-ter-h" id="minutes_r4h"></span
-                  ><span class="r-counter-4-label-h">Minutes</span>
-                </li>
-                <li>
-                  <span class="r-coun-4-ter-h" id="seconds_r4h"></span
-                  ><span class="r-counter-4-label-h">Seconds</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+      <div class="r4h-container">
+        <div id="r4h-countdown">
+          <ul>
+            <li>
+              <span class="r-coun-4-ter-h" id="r4h-days"></span
+              ><span class="r-counter-4-label-h">days</span>
+            </li>
+            <li>
+              <span class="r-coun-4-ter-h" id="r4h-hours"></span
+              ><span class="r-counter-4-label-h">Hours</span>
+            </li>
+            <li>
+              <span class="r-coun-4-ter-h" id="minutes_r4h"></span
+              ><span class="r-counter-4-label-h">Minutes</span>
+            </li>
+            <li>
+              <span class="r-coun-4-ter-h" id="seconds_r4h"></span
+              ><span class="r-counter-4-label-h">Seconds</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -93,7 +94,6 @@
 
         tomorrow.setDate(tomorrow.getDate());
         tomorrow.setHours(17, 59, 59, 0);
-
 
         const countdownInterval = setInterval(updateCountdown, 1000);
 
@@ -107,34 +107,22 @@
             document.getElementById("r4h-hours").textContent = "00";
             document.getElementById("minutes_r4h").textContent = "00";
             document.getElementById("seconds_r4h").textContent = "00";
-          } else {
-            
+          } 
+          else {
             const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-              (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-              (difference % (1000 * 60 * 60)) / (1000 * 60)
-            );
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById("r4h-days").textContent = days
-              .toString()
-              .padStart(2, "0");
-            document.getElementById("r4h-hours").textContent = hours
-              .toString()
-              .padStart(2, "0");
-            document.getElementById("minutes_r4h").textContent = minutes
-              .toString()
-              .padStart(2, "0");
-            document.getElementById("seconds_r4h").textContent = seconds
-              .toString()
-              .padStart(2, "0");
+            document.getElementById("r4h-days").textContent = days.toString().padStart(2, "0");
+            document.getElementById("r4h-hours").textContent = hours.toString().padStart(2, "0");
+            document.getElementById("minutes_r4h").textContent = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds_r4h").textContent = seconds.toString().padStart(2, "0");
           }
         }
       });
-         // const tomorrow = new Date('December 18, 2024 03:55:00');
-        // const tomorrow = new Date('2024-12-18T03:55:00');
+      // const tomorrow = new Date('December 18, 2024 03:55:00');
+      // const tomorrow = new Date('2024-12-18T03:55:00');
     </script>
   </body>
 </html>
